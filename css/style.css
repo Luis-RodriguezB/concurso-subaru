@@ -1,0 +1,32 @@
+:root {
+  /* Fonts */
+  --font-primary: 'Roboto', sans-serif;
+  
+  /* Background colors */
+  --bg-color-primary: #f1f1f1;
+  --bg-color-secondary: #222;
+
+  /* Colors */
+  --color-primary: #333;
+  --color-secondary: white;
+}
+
+*, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-primary);
+  background-color: var(--bg-color-primary);
+  color: var(--color-primary);
+}
