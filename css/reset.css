@@ -1,0 +1,59 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  display: block;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+img, picture, video, iframe, figure {
+  display: block;
+  max-width: 100%;
+  -o-object-fit: cover;
+  -o-object-position: center center;
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+}
+
+form, input, textarea, select, button, label {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+input:focus, textarea:focus, select:focus {
+  border: none;
+  outline: none;
+}
+textarea {
+  resize: vertical;
+}
+
+button,
+input[type=radio] {
+  cursor: pointer;
+}
