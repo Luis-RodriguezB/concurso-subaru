@@ -52,8 +52,11 @@ input:focus, textarea:focus, select:focus {
 textarea {
   resize: vertical;
 }
-
 button,
-input[type=radio] {
+input[type=radio],
+input[type=checkbox] {
   cursor: pointer;
+}
+button {
+  border: none;
 }
