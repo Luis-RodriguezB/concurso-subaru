@@ -21,6 +21,11 @@ a {
   text-decoration: none;
 }
 
+svg {
+  width: 100%;
+  height: 100%;
+}
+
 img, picture, video, iframe, figure {
   display: block;
   max-width: 100%;
@@ -44,6 +49,7 @@ form, input, textarea, select, button, label {
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
+  border: none;
 }
 input:focus, textarea:focus, select:focus {
   border: none;
@@ -56,7 +62,4 @@ button,
 input[type=radio],
 input[type=checkbox] {
   cursor: pointer;
-}
-button {
-  border: none;
 }
