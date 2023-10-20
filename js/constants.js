@@ -7,6 +7,12 @@ const constants = {
     LIGHT_THEME: 'light-theme',
   },
   CHANGE_ICON_TIME: 300,
-  IS_DARK_SCHEMEMATCH, 
+  IS_DARK_SCHEMEMATCH,
+  LABELS: {
+    BACK: 'Volver',
+    CANCEL: 'Cancelar',
+    NEXT: 'Siguiente',
+    SUBMIT: 'Enviar',
+  }
 };
 export default constants;

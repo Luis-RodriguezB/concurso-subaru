@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form-App</title>
+    <title>Concurso Subaru - Form</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -69,45 +69,66 @@
       <section class="form__container">
         <h1 class="title">Formulario animado</h1>
         <button class="btn btn-primary">Ir al formulario</button>
+        <div class="modal-form">
+          <div class="modal-form__container">
+            <div class="close-modal">
+              <button class="close-modal-btn" title="Close Modal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M18 6l-12 12"></path>
+                  <path d="M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="steps">
+
+            </div>
+            <form data-modal-form autocomplete="off">
+              <section class="first-step">
+                <div class="form-group">
+                  <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Nombre" />
+                  <label class="form-label" for="firstName">Nombre</label>
+                  <span class="error-message">El texto es requerido *</span>
+                </div>
+    
+                <div class="form-group">
+                  <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Apellidos" />
+                  <label class="form-label" for="lastName">Apellidos</label>
+                </div>
+    
+                <div class="form-group">
+                  <input class="form-input" type="email" name="email" id="email" placeholder="Correo electronico" />
+                  <label class="form-label" for="email">Correo electronico</label>
+                </div>
+    
+                <div class="form-group">
+                  <input class="form-input" type="tel" name="phone" id="phone" placeholder="Teléfono" />
+                  <label class="form-label" for="phone">Teléfono</label>
+                </div>
+              </section>
+              <div class="buttons-containers">
+                <button class="btn-cancel" type="button">
+                  <span>Cancelar</span>
+                  <span></span>
+                </button>
+
+                <button class="btn-submit" type="submit">
+                  <span>Enviar</span>
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M10 14l11 -11"></path>
+                      <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"></path>
+                   </svg>
+                  </span>
+                  <span></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
-
-    <div class="modal-form">
-      <div class="modal-form__container">
-        <div class="close-modal">
-          <button class="close-modal-btn" title="Close Modal">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M18 6l-12 12"></path>
-              <path d="M6 6l12 12"></path>
-            </svg>
-          </button>
-        </div>
-        <form autocomplete="off">
-          <section class="first-step">
-            <div class="form-group">
-              <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Nombre" />
-              <label class="form-label" for="firstName">Nombre</label>
-            </div>
-
-            <div class="form-group">
-              <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Apellidos" />
-              <label class="form-label" for="lastName">Apellidos</label>
-            </div>
-
-            <div class="form-group">
-              <input class="form-input" type="email" name="email" id="email" placeholder="Correo electronico" />
-              <label class="form-label" for="email">Correo electronico</label>
-            </div>
-
-            <div class="form-group">
-              <input class="form-input" type="tel" name="phone" id="phone" placeholder="Teléfono" />
-              <label class="form-label" for="phone">Teléfono</label>
-            </div>
-          </section>
-        </form>
-      </div>
-    </div>
 
     <div class="loader_wrapper">
       <span class="loader"></span>

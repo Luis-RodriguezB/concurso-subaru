@@ -4,7 +4,7 @@ import {
   CHANGE_THEME_BTN,
   MOON_ICON,
   SUN_ICON,
-  INPUTS_FORM_GROUP,
+  LOADER_ELEMENT,
 } from './HTMLElements';
 
 const { 
@@ -17,10 +17,8 @@ const {
 document.onreadystatechange = function () {
   const isLoaded = document.readyState === 'complete';
 
-  document.body.style.visibility = isLoaded ? 'visible' : 'hidden';
-  document.querySelector('.loader_wrapper').style.visibility = isLoaded
-    ? 'hidden'
-    : 'visible';
+  BODY_ELEMENT.style.visibility = isLoaded ? 'visible' : 'hidden';
+  LOADER_ELEMENT.style.visibility = isLoaded ? 'hidden' : 'visible';
 };
 
 window.onload = function () {
@@ -39,7 +37,7 @@ function onLoadTheme() {
   }
 }
 
-CHANGE_THEME_BTN.addEventListener('click', (e) => {
+CHANGE_THEME_BTN.addEventListener('click', () => {
   const currentTheme = localStorage.getItem(THEME_KEY);
   const nextTheme = currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
 
@@ -58,6 +56,7 @@ CHANGE_THEME_BTN.addEventListener('click', (e) => {
       MOON_ICON.classList.remove('show', 'wrapper__icon-hidding');
       SUN_ICON.classList.add('show');
     }, CHANGE_ICON_TIME);
+    
   } else {
     SUN_ICON.classList.add('wrapper__icon-hidding');
 

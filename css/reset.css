@@ -63,4 +63,5 @@ button,
 input[type=radio],
 input[type=checkbox] {
   cursor: pointer;
+  font-weight: 600;
 }
