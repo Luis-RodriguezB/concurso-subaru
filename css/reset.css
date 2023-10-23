@@ -27,7 +27,11 @@ svg {
   height: 100%;
 }
 
-img, picture, video, iframe, figure {
+img,
+picture,
+video,
+iframe,
+figure {
   display: block;
   max-width: 100%;
   -o-object-fit: cover;
@@ -37,7 +41,12 @@ img, picture, video, iframe, figure {
   width: 100%;
 }
 
-form, input, textarea, select, button, label {
+form,
+input,
+textarea,
+select,
+button,
+label {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -52,7 +61,9 @@ form, input, textarea, select, button, label {
   hyphens: auto;
   border: none;
 }
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   border: none;
   outline: none;
 }
@@ -60,8 +71,8 @@ textarea {
   resize: vertical;
 }
 button,
-input[type=radio],
-input[type=checkbox] {
+input[type='radio'],
+input[type='checkbox'] {
   cursor: pointer;
   font-weight: 600;
 }

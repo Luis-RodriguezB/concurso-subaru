@@ -1,7 +1,7 @@
 :root {
   /* Fonts */
   --font-primary: 'Roboto', sans-serif;
-  
+
   /* Background colors */
   --bg-color-primary: #f2f2f2;
   --bg-color-secondary: #222;
@@ -82,10 +82,10 @@ body {
   opacity: 0;
 }
 .wrapper__icon-showing {
-  animation: showingIcon var(--time-500);
+  animation: showing-icon var(--time-500);
 }
 .wrapper__icon-hidding {
-  animation: fadeOut var(--time-500) alternate;
+  animation: fade-out var(--time-500) alternate;
 }
 .wrapper__icon.show {
   display: block;
@@ -96,12 +96,8 @@ body {
   width: 100%;
   height: 100%;
 }
-.moon_icon {
-  color: var(--moon-color);
-}
-.sun_icon {
-  color: var(--sun-color);
-}
+.moon_icon { color: var(--moon-color); }
+.sun_icon { color: var(--sun-color); }
 
 /* Modal Form */
 .modal-form {
@@ -109,7 +105,7 @@ body {
   left: 0;
   top: 0;
   bottom: 0;
-  display: grid;
+  display: none;
   place-items: center;
   width: 100%;
   padding: 0.313rem 1rem;
@@ -117,17 +113,33 @@ body {
   -webkit-backdrop-filter: blur(0.25rem);
   backdrop-filter: blur(0.25rem);
   z-index: 999;
+  opacity: 0;
+}
+.modal-form__active {
+  display: grid;
+  animation: fade-in var(--time-300) linear;
+  opacity: 1;
+}
+.modal-form__close {
+  animation: fade-out var(--time-300) linear;
+}
+.modal-form__close .modal-form__container {
+  animation: bounce-out var(--time-500) ease;
 }
 .modal-form__container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   max-width: 37.5rem;
-  padding: 3.5rem;
+  padding: 3.5rem 2rem;
   position: relative;
   width: 100%;
   background-color: var(--modal-form-bg);
-  z-index: 999;
+  z-index: 9999;
+  border-radius: 2px;
+}
+.modal-form__container-animation {
+  animation: bounce-in var(--time-500) ease;
 }
 .close-modal {
   width: 30px;
@@ -154,7 +166,12 @@ body {
 }
 .form-input:focus {
   border-bottom: 2px solid;
-  border-image: linear-gradient(50deg, var(--color-blue) 25%, var(--color-light-blue) 100%) 1;
+  border-image: linear-gradient(
+      50deg,
+      var(--color-blue) 25%,
+      var(--color-light-blue) 100%
+    )
+    1;
   font-weight: 500;
 }
 .form-input::placeholder {
@@ -182,11 +199,18 @@ body {
   font-size: 14px;
   color: var(--color-error);
 }
+.form-group.invalid-input > .form-label {
+  color: var(--color-error);
+}
+.form-group.invalid-input > .form-input {
+  border-color: var(--color-error);
+}
+
 .buttons-containers {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 .btn-submit,
 .btn-cancel {
@@ -195,10 +219,17 @@ body {
   border-radius: 100px;
   padding: 12px 24px;
   overflow: hidden;
-  transition: all 600ms cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 .btn-cancel {
   box-shadow: 0 0 0 2px gray;
+}
+.btn-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 0 0 2px var(--color-blue);
 }
 .btn-submit span:last-child,
 .btn-cancel span:last-child {
@@ -210,16 +241,15 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 50%;
   opacity: 0;
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .btn-cancel span:last-child {
   background-color: var(--color-dark-grey);
 }
 .btn-submit span:last-child {
-  background-color: #28a745;
+  background-color: var(--color-blue);
 }
-
-.btn-submit span:nth-child(-n+2),
+.btn-submit span:nth-child(-n + 2),
 .btn-cancel span:first-child {
   position: relative;
   z-index: 1;
@@ -238,13 +268,6 @@ body {
   height: 160px;
   opacity: 1;
 }
-.btn-submit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-blue)
-}
-
 
 /* Loader */
 .loader_wrapper {
@@ -264,23 +287,23 @@ body {
   height: 3rem;
   border-radius: 50%;
   position: relative;
-  animation: rotate 1s linear infinite
+  animation: rotate 1s linear infinite;
 }
-.loader::before , .loader::after {
-  content: "";
+.loader::before,
+.loader::after {
+  content: '';
   box-sizing: border-box;
   position: absolute;
   inset: 0px;
   border-radius: 50%;
   border: 5px solid var(--color-secondary);
-  animation: prixClipFix 2s linear infinite ;
+  animation: prix-clip-fix 2s linear infinite;
 }
-.loader::after{
-  border-color: #FF3D00;
-  animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
+.loader::after {
+  border-color: #ff3d00;
+  animation: prix-clip-fix 2s linear infinite, rotate 0.5s linear infinite reverse;
   inset: 6px;
 }
-
 
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
@@ -292,42 +315,45 @@ body {
   body.light-theme {
     background-color: var(--bg-color-primary);
     color: var(--color-primary);
-    --modal-form-bg: var(--bg-color-primary)
+    --modal-form-bg: var(--bg-color-primary);
   }
 }
 
 @media (min-width: 768px) {
-
+  .modal-form__container {
+    padding: 3.5rem;
+  }
 }
-
 
 /* Animations */
-@keyframes showingIcon {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
+@keyframes showing-icon {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
-
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 @keyframes rotate {
-  0%   {transform: rotate(0deg)}
-  100%   {transform: rotate(360deg)}
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
-
-@keyframes prixClipFix {
-  0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-  25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-  50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-  75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-  100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+@keyframes prix-clip-fix {
+  0% { clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0); }
+  25% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0); }
+  50% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%); }
+  75% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%); }
+  100% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0); }
+}
+@keyframes bounce-in {
+  from { transform: scale(0.5); }
+  to { transform: scale(1); }
+}
+@keyframes bounce-out {
+  from { transform: scale(1); }
+  to { transform: scale(0.8); }
 }
