@@ -1,10 +1,10 @@
-import constants from './constants';
+import constants from './constansts/constants';
 import {
   BODY_ELEMENT,
   CHANGE_THEME_BTN,
   MOON_ICON,
   SUN_ICON,
-} from './HTMLElements';
+} from './constansts/HTMLElements';
 
 const {
   theme: { DARK_THEME, LIGHT_THEME, THEME_KEY },
