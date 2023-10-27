@@ -16,21 +16,19 @@ const MAX_FORM_STEP = formStepsArr.length - 1;
 let currentStep = formStepsArr.findIndex(step => step.classList.contains('active'));
 let timer;
 
-if (currentStep < 0) {
-  currentStep = 0;
-  showCurrentStep();
-}
-
 // OPEN MODAL
 OPEN_MODAL_BTN.addEventListener('click', () => {
   MODALFORM.classList.add('modal-form__active');
+  currentStep = 0;
+  showCurrentStep();
+  formStepsArr[currentStep].style.animation = 'none';
 });
 
 //CLOSE MODAL
 CLOSE_MODAL_BTN.addEventListener('click', closeModal);
 
 MODALFORM_BUTTONS.querySelector('[data-prev]').addEventListener('click', () => {
-
+  
   if (currentStep === 0) {
     closeModal();
     return;

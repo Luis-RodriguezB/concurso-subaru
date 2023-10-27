@@ -99,6 +99,32 @@ body {
 .moon_icon { color: var(--moon-color); }
 .sun_icon { color: var(--sun-color); }
 
+.form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form__container .title {
+  margin-bottom: 15px;
+}
+.form__container .btn-primary {
+  width: 100%;
+  max-width: 180px;
+  height: 50px;
+  padding: 12px 25px;
+  border-radius: 40px;
+  text-align: center;
+  border: 3px solid var(--color-blue);
+  transition: var(--time-300) ease-in-out;
+  transition-property: background-color, font-size;
+}
+.form__container .btn-primary:hover {
+  background-color: var(--color-blue);
+  color: var(--color-secondary);
+  font-size: 1.1em;
+}
+
 /* Modal Form */
 .modal-form {
   position: fixed;
@@ -161,6 +187,9 @@ body {
 .form-step.active {
   display: block;
   animation: slide 300ms 125ms ease-in-out both;
+}
+.form-step.first {
+  animation-play-state: paused;
 }
 
 .form-group {
