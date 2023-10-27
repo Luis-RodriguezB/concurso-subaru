@@ -75,7 +75,7 @@
         <h1 class="title">Formulario animado</h1>
         <button data-open-modal class="btn btn-primary">Ir al formulario</button>
 
-        <div class="modal-form">
+        <div class="modal-form modal-form__active">
           <div class="modal-form__container modal-form__container-animation">
             <div class="close-modal">
               <button class="close-modal-btn" title="Close Modal">
@@ -99,7 +99,8 @@
             </div>
             <div class="steps"></div>
             <form data-modal-form autocomplete="off">
-              <section class="first-step">
+
+              <section class="form-step">
                 <div class="form-group">
                   <input
                     class="form-input"
@@ -107,6 +108,7 @@
                     id="firstName"
                     name="firstName"
                     placeholder="Nombre"
+                    value="Luis Enrique"
                   />
                   <label class="form-label" for="firstName">Nombre</label>
                 </div>
@@ -118,6 +120,7 @@
                     id="lastName"
                     name="lastName"
                     placeholder="Apellidos"
+                    value="Rodriguez"
                   />
                   <label class="form-label" for="lastName">Apellidos</label>
                 </div>
@@ -129,6 +132,7 @@
                     name="email"
                     id="email"
                     placeholder="Correo electronico"
+                    value="luis@gmail.com"
                   />
                   <label class="form-label" for="email"
                     >Correo electronico</label
@@ -142,37 +146,46 @@
                     name="phone"
                     id="phone"
                     placeholder="Teléfono"
+                    value="83537229"
                   />
                   <label class="form-label" for="phone">Teléfono</label>
                 </div>
               </section>
-              <div class="buttons-containers">
-                <button class="btn-cancel" type="button">
+
+              <section class="form-step">
+                <div class="form-group">
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="zipcode"
+                    name="zipcode"
+                    placeholder="Zicode"
+                  />
+                  <label class="form-label" for="zipcode">Zipcode</label>
+                </div>
+              </section>
+
+              <div class="btn buttons-containers">
+                <button data-prev class="btn-cancel" type="button">
                   <span>Cancelar</span>
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M18 6l-12 12"></path>
+                      <path d="M6 6l12 12"></path>
+                   </svg>
+                  </span>
                   <span></span>
                 </button>
 
-                <button class="btn-submit" type="submit">
+                <button data-next class="btn btn-submit" type="button">
                   <span>Siguiente</span>
                   <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="icon icon-tabler icon-tabler-send"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke="currentColor"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M10 14l11 -11"></path>
-                      <path
-                        d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"
-                      ></path>
-                    </svg>
+                      <path d="M7 7l5 5l-5 5"></path>
+                      <path d="M13 7l5 5l-5 5"></path>
+                   </svg>
                   </span>
                   <span></span>
                 </button>

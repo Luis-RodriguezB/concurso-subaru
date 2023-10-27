@@ -11,8 +11,8 @@ export const OPEN_MODAL_BTN = document.querySelector('[data-open-modal]');
 
 /** FORM ELEMENTS */
 export const MODALFORM = document.querySelector('.modal-form');
-export const MODALFORM_FORM = MODALFORM.querySelector('[data-modal-form]');
 export const CLOSE_MODAL_BTN = MODALFORM.querySelector('.close-modal-btn');
+export const MODALFORM_FORM = MODALFORM.querySelector('[data-modal-form]');
+export const MODALFORM_STEPS = MODALFORM.querySelectorAll('.form-step');
 export const INPUTS_FORM_GROUP = MODALFORM.querySelectorAll('.form-group');
-
-export const SPAN_ERROR = document.createElement('span');
+export const MODALFORM_BUTTONS = MODALFORM.querySelector('.buttons-containers');

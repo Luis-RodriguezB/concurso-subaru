@@ -7,6 +7,7 @@ const constants = {
     LIGHT_THEME: 'light-theme',
   },
   TIMER_300: 300,
+  TIMER_500: 500,
   IS_DARK_SCHEMEMATCH,
   LABELS: {
     BACK: 'Volver',

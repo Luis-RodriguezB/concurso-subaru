@@ -18,6 +18,10 @@ export const configForm = {
     required: true,
     email: true,
   },
+  phone: {
+    required: true,
+    phone: true,
+  }
 };
 
 export const inputErrorMessages = {
@@ -27,12 +31,16 @@ export const inputErrorMessages = {
     max: `El nombre debe ser de máximo ${MAX_LENGTH_FIRSTNAME} caracteres`,
   },
   lastName: {
-    required: 'El apellido debe ser requerido',
+    required: 'El apellido ser requerido',
     min: `El apellido debe ser de mínimo ${MIN_LENGTH_LASTNAME} caracteres`,
     max: `El apellido debe ser de máximo ${MAX_LENGTH_LASTNAME} caracteres`,
   },
   email: {
-    required: 'El correo debe ser requerido',
+    required: 'El correo ser requerido',
     email: 'Debe de ser un correo válido',
+  },
+  phone: {
+    required: 'El teléfono es requerido',
+    phone: 'Debe de ser un formato válido',
   },
 }
