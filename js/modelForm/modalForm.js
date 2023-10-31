@@ -1,7 +1,6 @@
 import {
   OPEN_MODAL_BTN,
   MODALFORM,
-  MODALFORM_STEPS,
   CLOSE_MODAL_BTN,
   MODALFORM_FORM,
   INPUTS_FORM_GROUP,
@@ -16,26 +15,24 @@ import { configForm, inputErrorMessages } from './formConfig';
 
 
 const stepForm = new StepForm(0);
-const formStepsArr = [...MODALFORM_STEPS];
-const MAX_FORM_STEP = formStepsArr.length - 1;
-let currentStep = formStepsArr.findIndex(step => step.classList.contains('active'));
 let timer;
 
 // OPEN MODAL
 OPEN_MODAL_BTN.addEventListener('click', () => {
   MODALFORM.classList.add('modal-form__active');
-  currentStep = 0;
+  stepForm.nextStep(0);
   showCurrentStep();
 });
 
 //CLOSE MODAL
 CLOSE_MODAL_BTN.addEventListener('click', closeModal);
 
+// BUTTONS
 MODALFORM_BUTTONS.addEventListener('click', (e) => {
   let nextStep = 1;
 
   if (e.target.matches('[data-prev]')) {
-    if (currentStep === 0) {
+    if (stepForm.getCurrentStep() === 0) {
       closeModal();
       return;
     }
@@ -46,7 +43,7 @@ MODALFORM_BUTTONS.addEventListener('click', (e) => {
     nextStep *= 1;
   } else return;
 
-  currentStep += nextStep;
+  stepForm.nextStep(nextStep);
   showCurrentStep();
   changeContentBtn();
 });
@@ -68,6 +65,7 @@ MODALFORM_FORM.addEventListener('input', (e) => {
   }, constants.TIMER_500);
 });
 
+
 /**
  * Name: validatingCurrentStepInputs()
  * 
@@ -77,7 +75,8 @@ MODALFORM_FORM.addEventListener('input', (e) => {
  * @returns {boolean}
  */
 function validatingCurrentStepInputs() {
-  const inputs = [...formStepsArr[currentStep].querySelectorAll('input')];
+  const formStepsArr = stepForm.getFormStepArr();
+  const inputs = [...formStepsArr[stepForm.getCurrentStep()].querySelectorAll('input')];
   inputs.forEach(input => validatInput(input));
   return inputs.some(input => input.parentElement.classList.contains('invalid-input'));
 }
@@ -86,10 +85,11 @@ function validatingCurrentStepInputs() {
  * Name: showCurrentStep()
  * 
  * Description: function used to show the current form step
- */
+*/
 function showCurrentStep() {
+  const formStepsArr = stepForm.getFormStepArr();
   formStepsArr.forEach((step, index) =>
-    step.classList.toggle('active', currentStep === index)
+    step.classList.toggle('active', stepForm.getCurrentStep() === index)
   );
 }
 
@@ -201,7 +201,13 @@ function setInputError(property, propValue, inputValue, inputName) {
   }
 }
 
+/**
+ * Name: changeContentBtn()
+ * 
+ * Description: function that is used to change the button content
+ */
 function changeContentBtn() {
+  const currentStep = stepForm.getCurrentStep();
   const btnCancel = MODALFORM_BUTTONS.querySelector('[data-prev]');
   const btnNext = MODALFORM_BUTTONS.querySelector('[data-next]');
   const btnSubmit = MODALFORM_BUTTONS.querySelector('[data-submit]');
@@ -209,6 +215,6 @@ function changeContentBtn() {
   btnCancel.querySelector('.btn-first-span').innerHTML = currentStep === 0 ? 'Cancelar' : ARROWBACK_ICON;
   btnCancel.querySelector('.btn-scond-span').innerHTML = currentStep === 0 ? XICON : 'Volver';
 
-  btnNext.classList.toggle('d-flex', currentStep !== MAX_FORM_STEP);
-  btnSubmit.classList.toggle('d-flex', currentStep === MAX_FORM_STEP);
+  btnNext.classList.toggle('d-flex', currentStep !== stepForm.getMaxtStep());
+  btnSubmit.classList.toggle('d-flex', currentStep === stepForm.getMaxtStep());
 }

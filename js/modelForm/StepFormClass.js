@@ -1,14 +1,14 @@
 import { MODALFORM_STEPS } from '../constansts/HTMLElements';
- 
+
 export class StepForm {
   #currentStep;
   #formStepArr;
   #max_Steps;
 
-  constructor(currentStep = 0,) {
+  constructor(currentStep = 0) {
     this.#currentStep = currentStep;
     this.#formStepArr = [...MODALFORM_STEPS];
-    this.#max_Steps = this.formStepArr.length - 1;
+    this.#max_Steps = this.#formStepArr.length - 1;
   }
 
   getCurrentStep() {
