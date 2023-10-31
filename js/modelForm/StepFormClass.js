@@ -14,6 +14,9 @@ export class StepForm {
   getCurrentStep() {
     return this.#currentStep;
   }
+  resetCurrentStep() {
+    this.#currentStep = 0;
+  }
   nextStep(value) {
     return this.#currentStep += value;
   }

@@ -13,14 +13,13 @@ import constants from '../constansts/constants';
 import validations from '../utils/validations';
 import { configForm, inputErrorMessages } from './formConfig';
 
-
 const stepForm = new StepForm(0);
 let timer;
 
 // OPEN MODAL
 OPEN_MODAL_BTN.addEventListener('click', () => {
   MODALFORM.classList.add('modal-form__active');
-  stepForm.nextStep(0);
+  stepForm.resetCurrentStep();
   showCurrentStep();
 });
 
