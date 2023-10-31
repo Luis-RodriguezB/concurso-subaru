@@ -45,7 +45,7 @@ body {
   transition: all var(--time-300) ease-in-out;
 }
 
-/* Header */
+/* HEADER */
 .header {
   position: fixed;
   top: 0;
@@ -99,6 +99,7 @@ body {
 .moon_icon { color: var(--moon-color); }
 .sun_icon { color: var(--sun-color); }
 
+/* MODAL CONTAINER */
 .form__container {
   display: flex;
   flex-direction: column;
@@ -125,7 +126,7 @@ body {
   font-size: 1.1em;
 }
 
-/* Modal Form */
+/* MODAL FORM */
 .modal-form {
   position: fixed;
   left: 0;
@@ -245,6 +246,7 @@ body {
   border-color: var(--color-error);
 }
 
+/* MODAL BOTTOMS */
 .buttons-containers {
   display: flex;
   justify-content: space-between;
@@ -261,6 +263,9 @@ body {
   padding: 12px 16px;
   overflow: hidden;
   transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.btn-submit {
+  display: none;
 }
 .btn-cancel {
   box-shadow: 0 0 0 2px gray;
@@ -296,14 +301,17 @@ body {
   box-shadow: 0 0 0 2px var(--color-grey);
   color: var(--color-secondary);
 }
+.btn-submit:hover {
+  color: var(--color-secondary)
+}
 .btn-submit:active,
 .btn-cancel:active {
   transform: scale(0.95);
 }
 .btn-submit:hover span:last-child,
 .btn-cancel:hover span:last-child {
-  width: 160px;
-  height: 160px;
+  width: 250px;
+  height: 250px;
   opacity: 1;
 }
 
@@ -341,6 +349,17 @@ body {
   border-color: #ff3d00;
   animation: prix-clip-fix 2s linear infinite, rotate 0.5s linear infinite reverse;
   inset: 6px;
+}
+
+/* UTILS */
+.show {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+.d-flex {
+  display: flex;
 }
 
 /* DARK MODE */

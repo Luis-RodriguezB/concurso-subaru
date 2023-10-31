@@ -6,11 +6,16 @@ import {
   MODALFORM_FORM,
   INPUTS_FORM_GROUP,
   MODALFORM_BUTTONS,
+  ARROWBACK_ICON,
+  XICON,
 } from '../constansts/HTMLElements';
+import { StepForm } from './StepFormClass';
 import constants from '../constansts/constants';
 import validations from '../utils/validations';
 import { configForm, inputErrorMessages } from './formConfig';
 
+
+const stepForm = new StepForm(0);
 const formStepsArr = [...MODALFORM_STEPS];
 const MAX_FORM_STEP = formStepsArr.length - 1;
 let currentStep = formStepsArr.findIndex(step => step.classList.contains('active'));
@@ -21,31 +26,29 @@ OPEN_MODAL_BTN.addEventListener('click', () => {
   MODALFORM.classList.add('modal-form__active');
   currentStep = 0;
   showCurrentStep();
-  formStepsArr[currentStep].style.animation = 'none';
 });
 
 //CLOSE MODAL
 CLOSE_MODAL_BTN.addEventListener('click', closeModal);
 
-MODALFORM_BUTTONS.querySelector('[data-prev]').addEventListener('click', () => {
-  
-  if (currentStep === 0) {
-    closeModal();
-    return;
-  }
-  currentStep+= -1;
+MODALFORM_BUTTONS.addEventListener('click', (e) => {
+  let nextStep = 1;
+
+  if (e.target.matches('[data-prev]')) {
+    if (currentStep === 0) {
+      closeModal();
+      return;
+    }
+    nextStep *= -1;
+
+  } else if (e.target.matches('[data-next]')) {
+    if (validatingCurrentStepInputs()) return;
+    nextStep *= 1;
+  } else return;
+
+  currentStep += nextStep;
   showCurrentStep();
-});
-
-MODALFORM_BUTTONS.querySelector('[data-next]').addEventListener('click', (e) => {
-  const inputs = [...formStepsArr[currentStep].querySelectorAll('input')];
-  inputs.forEach(input => validatInput(input));
-  const inputWithError = inputs.find(input => input.parentElement.classList.contains('invalid-input'));
-
-  if (inputWithError) return;
-
-  currentStep+= 1;
-  showCurrentStep();
+  changeContentBtn();
 });
 
 // SUBMIT
@@ -65,12 +68,30 @@ MODALFORM_FORM.addEventListener('input', (e) => {
   }, constants.TIMER_500);
 });
 
+/**
+ * Name: validatingCurrentStepInputs()
+ * 
+ * Description: function used to chect and validate the inputs
+ * of the current form step
+ * 
+ * @returns {boolean}
+ */
+function validatingCurrentStepInputs() {
+  const inputs = [...formStepsArr[currentStep].querySelectorAll('input')];
+  inputs.forEach(input => validatInput(input));
+  return inputs.some(input => input.parentElement.classList.contains('invalid-input'));
+}
+
+/**
+ * Name: showCurrentStep()
+ * 
+ * Description: function used to show the current form step
+ */
 function showCurrentStep() {
   formStepsArr.forEach((step, index) =>
     step.classList.toggle('active', currentStep === index)
   );
 }
-
 
 /**
  * Name: closeModal()
@@ -95,7 +116,7 @@ function cleanInputs() {
     INPUT.classList.remove('invalid-input');
     INPUT.querySelector('.form-input').value = '';
     INPUT.querySelectorAll('.error-message').forEach(span => span.remove());
-  })
+  });
 }
 
 /**
@@ -178,4 +199,16 @@ function setInputError(property, propValue, inputValue, inputName) {
       if (propValue) return phone(inputValue) && inputErrors[property];
       return false;
   }
+}
+
+function changeContentBtn() {
+  const btnCancel = MODALFORM_BUTTONS.querySelector('[data-prev]');
+  const btnNext = MODALFORM_BUTTONS.querySelector('[data-next]');
+  const btnSubmit = MODALFORM_BUTTONS.querySelector('[data-submit]');
+
+  btnCancel.querySelector('.btn-first-span').innerHTML = currentStep === 0 ? 'Cancelar' : ARROWBACK_ICON;
+  btnCancel.querySelector('.btn-scond-span').innerHTML = currentStep === 0 ? XICON : 'Volver';
+
+  btnNext.classList.toggle('d-flex', currentStep !== MAX_FORM_STEP);
+  btnSubmit.classList.toggle('d-flex', currentStep === MAX_FORM_STEP);
 }
