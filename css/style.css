@@ -38,13 +38,18 @@ BreakPoints
 
 body {
   min-height: 100vh;
-  display: flex;
+  display: -webkit-flex;
   justify-content: center;
   align-items: center;
   font-family: var(--font-primary);
   background-color: var(--bg-color-primary);
   color: var(--color-primary);
   transition: all var(--time-300) ease-in-out;
+}
+
+.icon-container {
+  width: 24px;
+  height: 24px;
 }
 
 /* HEADER */
@@ -54,7 +59,7 @@ body {
   left: 0;
   width: 100%;
   padding: 1.25rem;
-  display: flex;
+  display: -webkit-flex;
   justify-content: end;
 }
 .change-theme {
@@ -103,7 +108,7 @@ body {
 
 /* MODAL CONTAINER */
 .form__container {
-  display: flex;
+  display: -webkit-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -156,7 +161,7 @@ body {
   animation: bounce-out var(--time-500) ease;
 }
 .modal-form__container {
-  display: flex;
+  display: -webkit-flex;
   flex-direction: column;
   flex-wrap: wrap;
   max-width: 37.5rem;
@@ -188,7 +193,7 @@ body {
   margin-bottom: 30px;
 }
 .steps__list {
-  display: flex;
+  display: -webkit-flex;
   max-width: 350px;
   width: 100%;
   margin: 0 auto;
@@ -235,7 +240,7 @@ body {
 }
 
 .form-group {
-  display: flex;
+  display: -webkit-flex;
   flex-direction: column;
   position: relative;
   padding: 25px 0px;
@@ -289,7 +294,7 @@ body {
 
 /* MODAL BOTTOMS */
 .buttons-containers {
-  display: flex;
+  display: -webkit-flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 2rem;
@@ -297,7 +302,7 @@ body {
 .btn-submit,
 .btn-cancel {
   position: relative;
-  display: flex;
+  display: -webkit-flex;
   justify-content: center;
   align-items: center;
   border-radius: 100px;
@@ -400,7 +405,7 @@ body {
   display: none;
 }
 .d-flex {
-  display: flex;
+  display: -webkit-flex;
 }
 
 /* DARK MODE */
