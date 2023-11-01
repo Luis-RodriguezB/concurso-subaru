@@ -31,9 +31,9 @@ export const inputErrorMessages = {
     max: `El nombre debe ser de máximo ${MAX_LENGTH_FIRSTNAME} caracteres`,
   },
   lastName: {
-    required: 'El apellido es requerido',
-    min: `El apellido debe ser de mínimo ${MIN_LENGTH_LASTNAME} caracteres`,
-    max: `El apellido debe ser de máximo ${MAX_LENGTH_LASTNAME} caracteres`,
+    required: 'El apellidos es requerido',
+    min: `El apellidos debe ser de mínimo ${MIN_LENGTH_LASTNAME} caracteres`,
+    max: `El apellidos debe ser de máximo ${MAX_LENGTH_LASTNAME} caracteres`,
   },
   email: {
     required: 'El correo es requerido',

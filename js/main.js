@@ -6,7 +6,7 @@ document.onreadystatechange = function () {
   const isLoaded = document.readyState === 'complete';
 
   BODY_ELEMENT.style.visibility = isLoaded ? 'visible' : 'hidden';
-  LOADER_ELEMENT.style.visibility = isLoaded ? 'hidden' : 'visible';
+  LOADER_ELEMENT.style.display = isLoaded ? 'none' : 'block';
 };
 
 window.onload = function () {
