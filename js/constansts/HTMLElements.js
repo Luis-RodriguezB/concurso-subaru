@@ -18,7 +18,7 @@ export const INPUTS_FORM_GROUP = MODALFORM.querySelectorAll('.form-group');
 export const MODALFORM_BUTTONS = MODALFORM.querySelector('.buttons-containers');
 
 
-export const XICON = `
+const X  = `
   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24"
     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -26,7 +26,7 @@ export const XICON = `
     <path d="M6 6l12 12" />
   </svg>
 `;
-export const ARROWBACK_ICON = `
+const ARROW_BACK = `
   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-left" width="24" height="24"
     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -34,3 +34,8 @@ export const ARROWBACK_ICON = `
     <path d="M17 7l-5 5l5 5" />
   </svg>
 `;
+
+export const ICONS = {
+  X,
+  ARROW_BACK,
+}

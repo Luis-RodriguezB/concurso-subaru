@@ -165,6 +165,7 @@ body {
   z-index: 9999;
   border-radius: 2px;
   overflow: hidden;
+  transition: min-height var(--time-300) ease-in-out;
 }
 .modal-form__container-animation {
   animation: bounce-in var(--time-500) ease;

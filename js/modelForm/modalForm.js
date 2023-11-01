@@ -5,8 +5,7 @@ import {
   MODALFORM_FORM,
   INPUTS_FORM_GROUP,
   MODALFORM_BUTTONS,
-  ARROWBACK_ICON,
-  XICON,
+  ICONS,
 } from '../constansts/HTMLElements';
 import { StepForm } from './StepFormClass';
 import constants from '../constansts/constants';
@@ -20,11 +19,16 @@ let timer;
 OPEN_MODAL_BTN.addEventListener('click', () => {
   MODALFORM.classList.add('modal-form__active');
   stepForm.resetCurrentStep();
+  stepForm.setLoaded(true);
   showCurrentStep();
+  changeContentBtn();
+  stepForm.setLoaded(false);
 });
 
 //CLOSE MODAL
-CLOSE_MODAL_BTN.addEventListener('click', closeModal);
+CLOSE_MODAL_BTN.addEventListener('click', () => {
+  closeModal();
+});
 
 // BUTTONS
 MODALFORM_BUTTONS.addEventListener('click', (e) => {
@@ -43,6 +47,12 @@ MODALFORM_BUTTONS.addEventListener('click', (e) => {
   } else return;
 
   stepForm.nextStep(nextStep);
+  const modal = MODALFORM.querySelector('.modal-form__container');
+  modal.style.minHeight = `${modal.clientHeight}px`;
+
+  setTimeout(() => {
+    modal.style.minHeight = 'auto';
+  }, 301);
   showCurrentStep();
   changeContentBtn();
 });
@@ -87,9 +97,16 @@ function validatingCurrentStepInputs() {
 */
 function showCurrentStep() {
   const formStepsArr = stepForm.getFormStepArr();
-  formStepsArr.forEach((step, index) =>
-    step.classList.toggle('active', stepForm.getCurrentStep() === index)
-  );
+
+  if (stepForm.isFirstLoaded()) {
+    formStepsArr[stepForm.getCurrentStep()].classList.add('show');
+    return;
+  }
+
+  formStepsArr.forEach((step, index) => {
+    step.classList.toggle('active', stepForm.getCurrentStep() === index);
+    step.classList.remove('show');
+  });
 }
 
 /**
@@ -102,6 +119,7 @@ function closeModal() {
   MODALFORM.classList.add('modal-form__close');
   setTimeout(() => {
     MODALFORM.classList.remove('modal-form__active', 'modal-form__close');
+    stepForm.getFormStepArr().forEach(step => step.classList.remove('active'));
   }, constants.TIMER_300);
 }
 
@@ -211,8 +229,8 @@ function changeContentBtn() {
   const btnNext = MODALFORM_BUTTONS.querySelector('[data-next]');
   const btnSubmit = MODALFORM_BUTTONS.querySelector('[data-submit]');
 
-  btnCancel.querySelector('.btn-first-span').innerHTML = currentStep === 0 ? 'Cancelar' : ARROWBACK_ICON;
-  btnCancel.querySelector('.btn-scond-span').innerHTML = currentStep === 0 ? XICON : 'Volver';
+  btnCancel.querySelector('.btn-first-span').innerHTML = currentStep === 0 ? 'Cancelar' : ICONS.ARROW_BACK;
+  btnCancel.querySelector('.btn-scond-span').innerHTML = currentStep === 0 ? ICONS.X : 'Volver';
 
   btnNext.classList.toggle('d-flex', currentStep !== stepForm.getMaxtStep());
   btnSubmit.classList.toggle('d-flex', currentStep === stepForm.getMaxtStep());
